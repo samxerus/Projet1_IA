@@ -6,9 +6,24 @@ from pycsp3 import *
 def solve_minesweeper(clues: list[list[int]]) -> list[(int, int)]:
     clear()
 
-    # TODO
+    rows = len(clues)
+    columns = len(clues[0]
+                  )
+    x =  VarArray(size=[columns, rows], dom=range(-1, 8))
 
-    return None
+    for i in range[columns] :
+        for j in range[rows] :
+            AllEqual((x[i][j]), Count((x[i + k][j + k] for k in [-1, 0, 1]), value=-1))
+
+    [x[i][j] == clues[i][j] for i in range(columns) for j in range(rows) if clues and clues[i][j] >= 0]
+
+    if solve(solver=CHOCO) is SAT:
+        print("SATISFIABLE")
+        positions = [(i, j) for i in range(len(x)) for j in range(len(x[0])) if x[i][j] == -1]
+        return positions
+    else:
+        print("UNSATISFIABLE")
+        return None
 
 
 def check_solution(clues: list[list[int]], solution: list[(int, int)]) -> bool:
