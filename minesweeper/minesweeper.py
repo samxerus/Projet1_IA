@@ -7,15 +7,40 @@ def solve_minesweeper(clues: list[list[int]]) -> list[(int, int)]:
     clear()
 
     rows = len(clues)
-    columns = len(clues[0]
-                  )
-    x =  VarArray(size=[columns, rows], dom=range(-1, 8))
+    columns = len(clues[0])
 
-    for i in range[columns] :
-        for j in range[rows] :
-            AllEqual((x[i][j]), Count((x[i + k][j + k] for k in [-1, 0, 1]), value=-1))
+    x =  VarArray(size=[rows, columns], dom=range(-1, 8))
 
-    [x[i][j] == clues[i][j] for i in range(columns) for j in range(rows) if clues and clues[i][j] >= 0]
+    for i in range(rows) :
+        for j in range(columns) :
+            if i == 0 and j == 0:
+                AllEqual((x[i][j]), Count((x[i + k][j + k] for k in [0, 1]), value=-1))
+
+            elif i == rows and j == columns:
+                AllEqual((x[i][j]), Count((x[i + k][j + k] for k in [-1, 0]), value=-1))
+            
+            elif i == 0 and j == columns:
+                AllEqual((x[i][j]), Count((x[i + ki][j + kj] for ki in [0, 1] for kj in [-1, 0]), value=-1))
+
+            elif i == rows and j == 0:
+                AllEqual((x[i][j]), Count((x[i + ki][j + kj] for ki in [-1, 0] for kj in [0, 1] ), value=-1))
+
+            elif i == 0:
+                AllEqual((x[i][j]), Count((x[i + ki][j + kj] for ki in [0, 1] for kj in [-1, 0, 1]), value=-1))
+
+            elif j == 0:
+                AllEqual((x[i][j]), Count((x[i + ki][j + kj] for ki in [-1, 0, 1] for kj in [0, 1] ), value=-1))
+
+            elif i == rows:
+                AllEqual((x[i][j]), Count((x[i + ki][j + kj] for ki in [-1, 0] for kj in [-1, 0, 1]), value=-1))
+
+            elif j == columns:
+                AllEqual((x[i][j]), Count((x[i + ki][j + kj] for ki in [-1, 0, 1] for kj in [-1, 0] ), value=-1))
+            
+            else:
+                AllEqual((x[i][j]), Count((x[i + k][j + k] for k in [-1, 0, 1]), value=-1))
+
+    [x[i][j] == clues[i][j] for i in range(rows) for j in range(columns) if clues and clues[i][j] >= 0]
 
     if solve(solver=CHOCO) is SAT:
         print("SATISFIABLE")

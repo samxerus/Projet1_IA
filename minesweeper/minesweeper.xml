@@ -1,5 +1,10 @@
 <instance format="XCSP3" type="CSP">
   <variables>
     <array id="x" size="[5][5]"> -1..7 </array>
+    <array id="aux_gb" note="aux_gb[i] is the ith auxiliary variable having been automatically introduced" size="[25]">
+      <domain for="aux_gb[0]"> 0..2 </domain>
+      <domain for="aux_gb[1..5] aux_gb[10] aux_gb[15] aux_gb[20]"> 0..6 </domain>
+      <domain for="aux_gb[6..9] aux_gb[11..14] aux_gb[16..19] aux_gb[21..24]"> 0..3 </domain>
+    </array>
   </variables>
 </instance>
