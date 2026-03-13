@@ -38,9 +38,15 @@ class AtomPlacement:
     # Returns the objective value of the given state
     def value(self, state: AtomPlacementState) -> int:
 
+        energie = 0
 
+        for (node1, node2) in self.edges:
+            typeNode1 = state.sites_assignment[node1]
+            typeNode2 = state.sites_assignment[node2]
 
-        return 0
+            energie += self.energy_matrix[typeNode1][typeNode2]
+
+        return energie
 
     def __init__(self, filename: str):
         file = open(filename)
