@@ -2,7 +2,6 @@
 
 class LSNode:
 
-
     def __init__(self, problem, state, step):
         """Create a local search Node."""
         self.problem = problem

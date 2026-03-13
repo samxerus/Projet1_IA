@@ -3,6 +3,7 @@
 import random
 from lsnode import LSNode
 from atom_placement import AtomPlacement
+import sys
 
 
 def random_walk(problem, limit=100) -> LSNode:
@@ -23,9 +24,25 @@ def max_value(problem: AtomPlacement, limit=100) -> LSNode:
     Perform a local search by selecting at each iteration the best neighbor of the current state.
     Returns a LSNode corresponding to the best found solution
     """
-    # TODO
+    result = LSNode(problem=problem, state=problem.init_state(), step=0)
+    for step in range(limit):
+        neighbors = problem.neighbors(result.state)
 
-    return None
+        minNeighbor = neighbors[0]
+        min = problem.value(neighbors[0])
+        
+        for j in range(1, len(neighbors)):
+
+            tmpNeighbor = neighbors[j]
+            tmpMin = problem.value(tmpNeighbor)
+
+            if tmpMin < min:
+                min = tmpMin
+                minNeighbor = tmpNeighbor
+
+        result = LSNode(problem=problem, state=minNeighbor, step=step)
+
+    return result
 
 
 def randomized_max_value(problem: AtomPlacement, limit=100) -> LSNode:
@@ -34,6 +51,14 @@ def randomized_max_value(problem: AtomPlacement, limit=100) -> LSNode:
     at each iteration.
     Returns a LSNode corresponding to the best found solution
     """
-    # TODO
+    result = LSNode(problem=problem, state=problem.init_state(), step=0)
+    for step in range(limit):
+        neighbors = problem.neighbors(result.state)
 
-    return None
+        sortedNeighbors = sorted(neighbors, key=lambda s: problem.value(s))
+        selectedNeighbors = sortedNeighbors[:5]
+        choice = random.choice(sortedNeighbors)
+
+        result = LSNode(problem=problem, state=choice, step=step)
+
+    return result
