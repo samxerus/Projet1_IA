@@ -17,9 +17,6 @@ class AtomPlacement:
     # Returns the neighbor states of the given state as a list of AtomPlacementState
     def neighbors(self, state: AtomPlacementState) -> list[AtomPlacementState]:
 
-        # Returns the neighbor states of the given state as a list of AtomPlacementState
-    def neighbors(self, state: AtomPlacementState) -> list[AtomPlacementState]:
-
         neighbors = []
 
         sites = state.sites_assignment
