@@ -9,24 +9,22 @@ def solve_minesweeper(clues: list[list[int]]) -> list[(int, int)]:
     rows = len(clues)
     columns = len(clues[0])
 
-    x =  VarArray(size=[rows, columns], dom=range(-1, 8))
+    x = VarArray(size=[rows, columns], dom={0, 1})
     
-    for i in range(rows) :
-        for j in range(columns) :
-            if clues[i][j] >= 0:
-                count = 0
-                for ki in range(max(0, i - 1), min(rows - 1, i + 1)):
-                    for kj in range(max(0, j - 1), min(rows - 1, j + 1)):
-                        if clues[ki][kj] == -1:
-                            count += 1
+    for i in range(rows):
+        for j in range(columns):
+            if  clues[i][j] >= 0:
+                satisfy(x[i][j] == 0)
+                satisfy(
+                    Sum(x[ki][kj] for ki in range(max(0, i-1), min(rows, i+2))
+                                  for kj in range(max(0, j-1), min(columns, j+2))
+                                  if not (ki == i and kj == j)) == clues[i][j]
+                )
                  
-                satisfy(x[i][j] == count)
-
-    satisfy([x[i][j] == clues[i][j] for i in range(rows) for j in range(columns) if clues and clues[i][j] >= 0])
 
     if solve(solver=CHOCO) is SAT:
         print("SATISFIABLE")
-        positions = [(i, j) for i in range(len(x)) for j in range(len(x[0])) if x[i][j] == -1]
+        positions = [(i, j) for i in range(rows) for j in range(columns) if value(x[i][j]) == 1]
         return positions
     else:
         print("UNSATISFIABLE")
@@ -69,7 +67,7 @@ def parse_instance(input_file: str) -> list[list[int]]:
 
 
 if __name__ == '__main__':
-    clues = parse_instance("instances/sat/i02.txt")
+    clues = parse_instance("instances/sat/i05.txt")
     solution = solve_minesweeper(clues)
     if solution is not None:
         if check_solution(clues, solution):
