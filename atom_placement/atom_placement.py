@@ -31,14 +31,14 @@ class AtomPlacement:
                     newSites[i] = newSites[j]
                     newSites[j] = tmp
 
-                    neighbors.append(newSites)
+                    neighbors.append(AtomPlacementState(newSites))
 
         return neighbors
 
     # Returns the objective value of the given state
     def value(self, state: AtomPlacementState) -> int:
 
-        # TODO
+
 
         return 0
 
