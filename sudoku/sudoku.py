@@ -20,7 +20,7 @@ def solve_sudoku(clues):
     [x[i][j] == clues[i][j] for i in range(9) for j in range(9) if clues and clues[i][j] > 0],
 
     # ADD YOUR SUPPLEMENTARY CONSTRAINT HERE
-    
+    [AllDifferent(x[i][j] for i in [1, 4, 7] for j in [1, 4, 7])]
     )
 
     # Solve the problem and print the solution if found
@@ -32,6 +32,25 @@ def solve_sudoku(clues):
     else:
         print("UNSATISFIABLE")
         return None
+    
+"""if __name__ == "__main__":
+    # Definition of the initial sudoku grid
+    clues = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [6, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+    solution = solve_sudoku(clues)
+    for row in solution:
+        print(row)"""
+    
+
+
 
 
 if __name__ == "__main__":
