@@ -15,15 +15,16 @@ class AtomPlacement:
         return AtomPlacementState(sites)
 
     # Returns the neighbor states of the given state as a list of AtomPlacementState
-    def neighbors(self, state: AtomPlacementState) -> list[AtomPlacementState]:
+    def neighbors(self, state: AtomPlacementState) -> list[AtomPlacementState]: 
+
+        # 0 0 1 1 -> 1 0 0 1 | 0 1 0 1 | 1 0 1 0 | 0 1 1 0
 
         neighbors = []
 
         sites = state.sites_assignment
-        n = len(sites)
 
-        for i in range(n):
-            for j in range(i + 1, n):
+        for i in range(self.n_sites):
+            for j in range(i + 1, self.n_sites):
                 if sites[i] != sites[j]:
                     newSites = sites.copy()
 
