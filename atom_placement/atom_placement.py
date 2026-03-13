@@ -41,9 +41,9 @@ class AtomPlacement:
 
         energie = 0
 
-        for (node1, node2) in self.edges:
-            typeNode1 = state.sites_assignment[node1]
-            typeNode2 = state.sites_assignment[node2]
+        for (indexNode1, indexNode2) in self.edges:
+            typeNode1 = state.sites_assignment[indexNode1]
+            typeNode2 = state.sites_assignment[indexNode2]
 
             energie += self.energy_matrix[typeNode1][typeNode2]
 
