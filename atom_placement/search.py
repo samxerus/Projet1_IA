@@ -57,7 +57,7 @@ def randomized_max_value(problem: AtomPlacement, limit=100) -> LSNode:
 
         sortedNeighbors = sorted(neighbors, key=lambda s: problem.value(s))
         selectedNeighbors = sortedNeighbors[:5]
-        choice = random.choice(sortedNeighbors)
+        choice = random.choice(selectedNeighbors)
 
         result = LSNode(problem=problem, state=choice, step=step)
 
