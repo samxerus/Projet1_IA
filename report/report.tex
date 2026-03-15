@@ -2,8 +2,8 @@
 \usepackage{marvosym}
 
 \assignment{1}
-\group{...}
-\students{..........}{..........}
+\group{73}
+\students{Nicolas Heymans}{Gilles de Jamblinne de Meux }
 
 \begin{document}
 
@@ -38,7 +38,19 @@ The size of the boxes indicate the place you \textbf{can} use, but you \textbf{n
 \end{enumerate}
 
 \begin{answers}[10cm]
-    % Your answer here
+    \textbf{Variables et Domaines}
+    \begin{itemize}
+        \item Nous utilisons un tableau de variables \texttt{VarArray} nommé $x$, de taille $rows \times columns$.
+        \item Chaque variable $x[i][j]$ a un domaine binaire $\{0, 1\}$: la valeur $1$ indique la présence d'une mine et $0$ son absence.
+        \item Le nombre total de variables correspond au nombre total de cellules de la grille, soit $|V| = rows \times columns$.
+    \end{itemize}
+
+    \textbf{Contraintes}
+    \begin{itemize}
+        \item \textbf{Cases d'indices  :} Pour chaque cellule $(i, j)$ contenant un indice $\geq 0$ dans la grille d'indice, nous appliquons la contrainte \texttt{satisfy(x[i][j] == 0)} dans la grille de solution, car une mine ne peut pas être placée sur une case d'indice.
+        \item \textbf{Somme du voisinage :} Pour chaque indice $C$ situé à la position $(i, j)$, nous imposons que la somme des variables adjacentes $x[ki][kj]$ dans le voisinage de Moore (les 8 cases entourant la cellule, sans s'inclure elle-même) dans la grille de la solution soit exactement égale à $C$.   
+        \item \textbf{Résolution :} Si le solveur trouve une solution satisfaisable , nous extrayons toutes les coordonnées $(i, j)$ où $x[i][j] = 1$ (les coordonnées des bombes). Dans le cas contraire, le modèle retourne simplement \texttt{None}.
+    \end{itemize}
 \end{answers}
 
 
@@ -51,7 +63,22 @@ The size of the boxes indicate the place you \textbf{can} use, but you \textbf{n
 \end{enumerate}
 
 \begin{answers}[6cm]
-% Your answer here
+
+Trouver la configuration spatiale de $n$ atomes qui minimise l'énergie potentielle totale du système.
+
+Soit un vecteur 
+\[
+\mathbf{s} = [s_1, s_2, \dots, s_n]
+\] 
+où $s_i$ est le type d'un atome dans le cristal et $s_i \in \{0, 1, \dots, n-1\}$.
+
+nous cherchons a minimiser $E_s$ qui ce définit comme suit:
+\[
+E_s = \sum_{(i,j)\in F} H(s_i, s_j)
+\]
+
+où $H$ est la matrice $n$ x $n$ contenant les valeurs d'énergie pour une liaison atomique $(s_i, s_j)$.
+
 \end{answers}
 
 
@@ -112,25 +139,25 @@ The size of the boxes indicate the place you \textbf{can} use, but you \textbf{n
 \cline{2-10}
  & T(s) & Val & NS & T(s) & Val & NS & T(s) & Val & NS\\
 \hline
-i01 & & & & & & & & &\\
+i01 & 0.2887 & 151.0 & 5.0 & 0.2992 & 129.4 & 59.6 & 0.0160 & 216.3 & 62.1 \\
 \hline
-i02 & & & & & & & & &\\
+i02 & 11.4055 & 1281.0 & 17.0 & 11.4880 & 1251.5 & 44.6 & 0.1115 & 1696.6 & 58.4 \\
 \hline
-i03 & & & & & & & & &\\
+i03 & 13.1580 & 1128.0 & 22.0 & 13.3080 & 1110.3 & 71.4 & 0.1249 & 1834.4 & 64.1 \\
 \hline
-i04 & & & & & & & & &\\
+i04 & 7.0758 & 274.0 & 12.0 & 7.1667 & 259.3 & 47.5 & 0.0721 & 574.5 & 53.3 \\
 \hline
-i05 & & & & & & & & &\\
+i05 & 0.2632 & 304.0 & 4.0 & 0.2717 & 298.3 & 46.5 & 0.0139 & 364.7 & 50.8 \\
 \hline
-i06 & & & & & & & & &\\
+i06 & 0.3199 & 269.0 & 7.0 & 0.3276 & 270.4 & 51.7 & 0.0154 & 339.2 & 47.2 \\
 \hline
-i07 & & & & & & & & &\\
+i07 & 1.6651 & 244.0 & 14.0 & 1.7188 & 224.5 & 61.3 & 0.0361 & 419.7 & 35.1 \\
 \hline
-i08 & & & & & & & & &\\
+i08 & 5.6791 & 465.0 & 20.0 & 5.7849 & 461.1 & 75.7 & 0.0691 & 823.9 & 42.0 \\
 \hline
-i09 & & & & & & & & &\\
+i09 & 1.7871 & 481.0 & 7.0 & 1.7515 & 411.4 & 59.4 & 0.0375 & 688.1 & 27.9 \\
 \hline
-i10 & & & & & & & & &\\
+i10 & 4.8352 & 1994.0 & 16.0 & 4.8834 & 1994.2 & 58.3 & 0.0648 & 2338.8 & 61.9 \\
 \hline
 \end{tabular}
 \end{center}
@@ -148,7 +175,7 @@ i10 & & & & & & & & &\\
 \end{enumerate}
 
 \begin{answers}[3.5cm]
-% Your answer here
+La meilleure stratégie est \texttt{Random max value}, car elle a systématiquement des résultats meilleurs ou équivalents à \texttt{Max value}.
 \end{answers}
 
 
@@ -162,7 +189,15 @@ i10 & & & & & & & & &\\
 \end{enumerate}
 
 \begin{answers}[7.5cm]
-% Your answer here
+La supériorité de \texttt{Random max value} peut s’expliquer par sa capacité à explorer un plus grand nombre de trajectoires différentes, en sélectionnant aléatoirement une solution parmi un ensemble de candidats. Cette approche lui permet d’éviter de tomber immédiatement dans un minimum local et augmente ses chances d’atteindre un minimum global.
+
+En revanche, \texttt{Max value} ne considère qu’une seule solution à la fois, ce qui limite sa diversification. Ainsi, lorsqu’elle se retrouve dans un minimum local si aucune solution voisine n’améliore la valeur de l’objectif, l’algorithme reste bloqué dans ce minimum local.
+
+À l’opposé, \texttt{Random walk} ne vise pas une solution spécifique : elle ne réalise que de la diversification, sans aucune intensification. Elle se contente d’explorer l’espace de solutions de manière aléatoire, sans objectif précis.
+
+En conclusion, pour le problème de placement d’atomes, les stratégies combinant exploration aléatoire et sélection de solutions jugées prometteuses permettent d’obtenir des solutions de meilleure qualité, proches du minimum global. Elles offrent un équilibre entre diversification et intensification, réduisant le risque de stagnation dans un minimum local et favorisant l’atteinte du minimum global.
+
+
 \end{answers}
 
 
@@ -177,22 +212,32 @@ i10 & & & & & & & & &\\
 \end{enumerate}
 
 \begin{answers}[5cm]
-% Your answer here
+\textbf{Random Walk}: privilégie uniquement la diversification, sans aucune intensification.\\
+
+\textbf{Max Value}: privilégie uniquement l'intensification, avec presque aucune diversification. \\
+
+\textbf{Random Max Value}:  équilibre entre diversification et intensification (sélection aléatoire parmi les 5 meilleures solutions).\\
+
 \end{answers}
-
-
 
 \begin{enumerate}
 \setcounter{enumi}{3}
 \begin{enumerate}
-\setcounter{enumii}{2}
+\setcounter{enumii}{3}
     \item What is the behavior of the different techniques when they fall 
     in a local optimum? \textbf{(1 pt)}
 \end{enumerate}
 \end{enumerate}
-
 \begin{answers}[5cm]
-% Your answer here
+\textbf{Random Walk}: Lorsqu'il atteint un minimum local trouvé par hasard, l'algorithme le quitte immédiatement en choisissant une nouvelle solution aléatoire.\\
+
+
+\textbf{Max Value}: Une fois bloqué dans un minimum local, il remonte vers une solution légèrement sous-optimale, puis retourne directement vers le minimum local précédemment trouvé.\\
+
+
+\textbf{Random Max Value}: Il peut quitter le minimum local et a une certaine probabilité de continuer à remonter afin d’explorer un autre minimum local.\\
+
+
 \end{answers}
 
 
