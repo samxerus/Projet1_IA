@@ -1,0 +1,42 @@
+Instance        | Strategy               | Avg Value  | Avg Steps  | Time (s)  
+-------------------------------------------------------------------------------
+instances/i01.txt | random_walk            | 216.30     | 62.1       | 0.01601   
+instances/i01.txt | max_value              | 151.00     | 5.0        | 0.28869   
+instances/i01.txt | randomized_max_value   | 129.40     | 59.6       | 0.29920   
+-------------------------------------------------------------------------------
+instances/i02.txt | random_walk            | 1696.60    | 58.4       | 0.11153   
+instances/i02.txt | max_value              | 1281.00    | 17.0       | 11.40551  
+instances/i02.txt | randomized_max_value   | 1251.50    | 44.6       | 11.48800  
+-------------------------------------------------------------------------------
+instances/i03.txt | random_walk            | 1834.40    | 64.1       | 0.12490   
+instances/i03.txt | max_value              | 1128.00    | 22.0       | 13.15798  
+instances/i03.txt | randomized_max_value   | 1110.30    | 71.4       | 13.30802  
+-------------------------------------------------------------------------------
+instances/i04.txt | random_walk            | 574.50     | 53.3       | 0.07210   
+instances/i04.txt | max_value              | 274.00     | 12.0       | 7.07578   
+instances/i04.txt | randomized_max_value   | 259.30     | 47.5       | 7.16671   
+-------------------------------------------------------------------------------
+instances/i05.txt | random_walk            | 364.70     | 50.8       | 0.01386   
+instances/i05.txt | max_value              | 304.00     | 4.0        | 0.26316   
+instances/i05.txt | randomized_max_value   | 298.30     | 46.5       | 0.27168   
+-------------------------------------------------------------------------------
+instances/i06.txt | random_walk            | 339.20     | 47.2       | 0.01537   
+instances/i06.txt | max_value              | 269.00     | 7.0        | 0.31988   
+instances/i06.txt | randomized_max_value   | 270.40     | 51.7       | 0.32757   
+-------------------------------------------------------------------------------
+instances/i07.txt | random_walk            | 419.70     | 35.1       | 0.03608   
+instances/i07.txt | max_value              | 244.00     | 14.0       | 1.66513   
+instances/i07.txt | randomized_max_value   | 224.50     | 61.3       | 1.71882   
+-------------------------------------------------------------------------------
+instances/i08.txt | random_walk            | 823.90     | 42.0       | 0.06907   
+instances/i08.txt | max_value              | 465.00     | 20.0       | 5.67910   
+instances/i08.txt | randomized_max_value   | 461.10     | 75.7       | 5.78494   
+-------------------------------------------------------------------------------
+instances/i09.txt | random_walk            | 688.10     | 27.9       | 0.03754   
+instances/i09.txt | max_value              | 481.00     | 7.0        | 1.78713   
+instances/i09.txt | randomized_max_value   | 411.40     | 59.4       | 1.75148   
+-------------------------------------------------------------------------------
+instances/i10.txt | random_walk            | 2338.80    | 61.9       | 0.06481   
+instances/i10.txt | max_value              | 1994.00    | 16.0       | 4.83524   
+instances/i10.txt | randomized_max_value   | 1994.20    | 58.3       | 4.88342   
+-------------------------------------------------------------------------------

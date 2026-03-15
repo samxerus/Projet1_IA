@@ -19,7 +19,7 @@ def random_walk(problem, limit=100) -> LSNode:
     return best
 
 
-def max_value(problem: AtomPlacement, limit=500) -> LSNode:
+def max_value(problem: AtomPlacement, limit=100) -> LSNode:
     """
     Perform a local search by selecting at each iteration the best neighbor of the current state.
     Returns a LSNode corresponding to the best found solution
@@ -52,7 +52,7 @@ def max_value(problem: AtomPlacement, limit=500) -> LSNode:
     return best_node
 
 
-def randomized_max_value(problem: AtomPlacement, limit=500) -> LSNode:
+def randomized_max_value(problem: AtomPlacement, limit=100) -> LSNode:
     """
     Perform a local search by randomly selecting a neighbor among the 5 bests
     at each iteration.
