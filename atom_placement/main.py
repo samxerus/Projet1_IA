@@ -30,7 +30,7 @@ def run_multiple_times(func, problem, step_limit, runs=10):
     return avg_value, avg_steps, avg_time
 
 if __name__ == '__main__':
-    problem = AtomPlacement("instances/i10.txt")
+    problem = AtomPlacement("instances/i09.txt")
     init_state = problem.init_state()
     step_limit = 100
     runs = 10
